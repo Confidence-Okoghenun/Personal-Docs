@@ -1,0 +1,16 @@
+Git Cheet Sheat
+    
+    1. To refresh list of remote branches:
+       git remote update <remote> --prune
+           
+    2. To untrack a tracked file:
+       git rm -r --cached <file/folder_name>
+           
+    3. To delete a local branch:
+       git branch -D <branch_name>
+           
+    4. To delete a remote branch:
+       git push --delete <remote_name> <branch_name>
+         
+    5. To create a new branch form current branch:
+       git checkout -b <new_branch_name>
