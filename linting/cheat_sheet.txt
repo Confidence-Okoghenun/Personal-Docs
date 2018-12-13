@@ -1,0 +1,57 @@
+Linting Cheat Sheet
+
+    1. Install eslint globally and as dev dependency:
+       npm i eslint
+       npm install -D eslint
+       
+    2. Configure eslint for the current project:
+       ./node_modules/.bin/eslint --init
+       
+    3. Install prettier as dev dependency:
+       npm i prettier eslint-config-prettier eslint-plugin-prettier -D
+       
+    4. Use this as vscode workspace settings: 
+       {
+          "editor.formatOnSave": true,
+          "[javascript]": {
+            "editor.formatOnSave": false
+          },
+          "eslint.autoFixOnSave": true,
+          "eslint.alwaysShowStatus": true,
+          "prettier.disableLanguages": ["js"]
+        }
+
+    5. Minimun package.json setup to get eslint and prettier to run beform commit:
+       {
+        "name": "huskys",
+        "version": "1.0.0",
+        "description": "",
+        "main": "index.js",
+        "dependencies": {
+          "eslint": "^5.10.0",
+          "husky": "^1.2.0"
+        },
+        "scripts": {
+          "test": "echo \"Error: no test specified\" && exit 1",
+          "precommit": "lint-staged"
+        },
+        "lint-staged": {
+          "*.{js,scss,css}": [
+            "./node_modules/.bin/prettier --single-quote --trailing-comma es5 --write *.js *.scss",
+            "./node_modules/.bin/eslint *.js",
+            "git add"
+          ]
+        },
+        "devDependencies": {
+          "eslint": "^5.10.0",
+          "eslint-config-airbnb-base": "^13.1.0",
+          "eslint-config-prettier": "^2.9.0",
+          "eslint-plugin-import": "^2.14.0",
+          "eslint-plugin-prettier": "^2.6.0",
+          "lint-staged": "^8.1.0",
+          "prettier": "^1.15.3",
+          "pretty-quick": "^1.4.1"
+        },
+        "author": "",
+        "license": "ISC"
+      }
